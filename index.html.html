@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2027 加拿大青少年工程科研探索营</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Public+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --yale: #00356b;
+        --yale-deep: #00284f;
+        --yale-ink: #01203c;
+        --yale-mid: #286dc0;
+        --yale-sky: #a6c8ec;
+        --yale-pale: #e8f0f9;
+        --gold: #b98a1c;
+        --gold-bright: #e3aa00;
+        --bg: #fbfcfe;
+        --surface: #ffffff;
+        --surface-2: #eef4fa;
+        --text: #16283c;
+        --text-soft: #43586e;
+        --line: #d7e2ee;
+        --hero-overlay: rgba(0, 32, 60, 0.62);
+        --shadow: 0 10px 30px rgba(0, 40, 79, 0.1);
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --yale: #7aa9dd;
+          --yale-deep: #0a1e36;
+          --yale-ink: #dcebf9;
+          --yale-mid: #5b93d6;
+          --yale-sky: #39597e;
+          --yale-pale: #12283f;
+          --gold: #e3aa00;
+          --gold-bright: #f2bc33;
+          --bg: #081627;
+          --surface: #0d2138;
+          --surface-2: #10283f;
+          --text: #e6eff8;
+          --text-soft: #a9bfd4;
+          --line: #24405c;
+          --hero-overlay: rgba(2, 18, 34, 0.66);
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Public Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: var(--yale-mid); }
+      .serif { font-family: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, serif; }
+
+      /* Language switching: exactly one version visible at a time */
+      body[data-lang="zh"] [data-en] { display: none !important; }
+      body[data-lang="en"] [data-zh] { display: none !important; }
+
+      /* ---------- Top bar ---------- */
+      .topbar {
+        position: sticky; top: 0; z-index: 50;
+        background: var(--yale-deep);
+        color: #fff;
+      }
+      .topbar-in {
+        max-width: 1180px; margin: 0 auto; padding: 0 20px;
+        display: flex; align-items: center; justify-content: space-between;
+        min-height: 60px; gap: 16px;
+      }
+      .brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+      .brand-name {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 19px; font-weight: 700; letter-spacing: 0.02em; color: #fff;
+      }
+      .brand-sub { font-size: 12px; color: var(--yale-sky); letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      @media (max-width: 560px) { .brand-sub { display: none; } .brand-name { font-size: 15px; } }
+      .lang-toggle {
+        display: inline-flex; border: 1px solid rgba(255,255,255,0.45); border-radius: 999px; overflow: hidden; flex: none;
+      }
+      .lang-toggle button {
+        appearance: none; border: 0; cursor: pointer;
+        background: transparent; color: #dbe9f8;
+        font: inherit; font-size: 14px; font-weight: 600;
+        padding: 7px 16px;
+      }
+      .lang-toggle button[aria-pressed="true"] { background: #fff; color: var(--yale-deep); }
+      .lang-toggle button:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: -2px; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative; color: #fff;
+        background: var(--yale-deep);
+      }
+      .hero img.hero-bg {
+        position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      }
+      /* The hero background is a wide architecture-only crop; on narrow screens, frame the McGill building on the right. */
+      @media (max-width: 600px) { .hero img.hero-bg { object-position: 78% 50%; } }
+      .hero::after {
+        content: ""; position: absolute; inset: 0;
+        background: var(--hero-overlay);
+      }
+      .hero-in {
+        position: relative; z-index: 1;
+        max-width: 1180px; margin: 0 auto;
+        padding: clamp(64px, 11vw, 128px) 20px clamp(56px, 9vw, 104px);
+        container-type: inline-size;
+      }
+      .hero-eyebrow {
+        display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.22em;
+        color: #fff; border: 1px solid rgba(255,255,255,0.55);
+        padding: 5px 14px; border-radius: 999px; margin-bottom: 22px;
+        background: rgba(0, 40, 79, 0.35);
+      }
+      .hero h1 {
+        font-family: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, serif;
+        font-size: clamp(34px, 6.2vw, 62px); line-height: 1.18; font-weight: 900;
+        margin: 0 0 18px; max-width: 15em;
+        text-wrap: balance;
+      }
+      /* Chinese headline: always exactly one line, font scales with the hero width */
+      .hero h1[data-zh] {
+        white-space: nowrap;
+        text-wrap: nowrap;
+        max-width: none;
+        font-size: clamp(14px, 5.6vw, 62px);
+        font-size: clamp(14px, 6cqi, 64px);
+      }
+      .hero .tagline {
+        font-family: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, serif;
+        font-size: clamp(19px, 3vw, 27px); font-weight: 600;
+        color: #ffe9a8; margin: 0 0 26px;
+      }
+      .hero p.lede { font-size: clamp(15px, 2vw, 18px); max-width: 42em; color: #eaf2fb; margin: 0 0 14px; }
+      .hero-points {
+        list-style: none; margin: 0 0 32px; padding: 0; max-width: 42em;
+        font-size: clamp(15px, 2vw, 17.5px); color: #eaf2fb;
+      }
+      .hero-points li { position: relative; padding-left: 26px; margin-bottom: 9px; line-height: 1.55; }
+      .hero-points li::before {
+        content: ""; position: absolute; left: 2px; top: 0.52em;
+        width: 8px; height: 8px; border-radius: 2px; background: var(--gold-bright);
+      }
+      .hero-points li strong { color: #fff; }
+      .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+      .hero-facts span {
+        font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 6px;
+        background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3);
+      }
+      .hero-facts span.fact-strong {
+        background: var(--gold-bright); color: #231a00; border-color: transparent; font-weight: 700;
+      }
+      .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+      .btn {
+        display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px;
+        padding: 13px 26px; border-radius: 6px;
+      }
+      .btn-gold { background: var(--gold-bright); color: #231a00; }
+      .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.75); }
+
+      /* ---------- Sections ---------- */
+      main { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+      section { padding: clamp(48px, 8vw, 84px) 0 8px; }
+      .sec-head { max-width: 46em; margin-bottom: 34px; }
+      .sec-head h2 {
+        font-family: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, serif;
+        font-size: clamp(26px, 4vw, 38px); font-weight: 900; line-height: 1.25;
+        color: var(--yale-ink); margin: 0 0 10px;
+      }
+      .sec-head .rule { width: 56px; height: 4px; background: var(--gold-bright); border-radius: 2px; margin-bottom: 16px; }
+      .sec-head p { color: var(--text-soft); margin: 0; font-size: 16px; }
+      .school-contact { margin-top: 16px; }
+      .school-contact span {
+        display: block; font-size: 21px; font-weight: 800; line-height: 1.5;
+        color: var(--yale-ink); letter-spacing: 0.01em;
+      }
+      @media (max-width: 600px) { .school-contact span { font-size: 20px; } }
+
+      /* Highlights */
+      .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      @media (max-width: 900px) { .hl-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 600px) { .hl-grid { grid-template-columns: 1fr; } }
+      .hl-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 24px 22px; box-shadow: var(--shadow);
+      }
+      .hl-card .ic {
+        width: 44px; height: 44px; border-radius: 8px; margin-bottom: 14px;
+        background: var(--yale-pale); color: var(--yale);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .hl-card .ic svg { width: 24px; height: 24px; }
+      .hl-card h3 { font-size: 17.5px; margin: 0 0 8px; color: var(--yale-ink); line-height: 1.4; }
+      .hl-card p { margin: 0; font-size: 14.5px; color: var(--text-soft); }
+
+      /* Feature split */
+      .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center; }
+      @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+      .split figure { margin: 0; }
+      .split figure img { border-radius: 10px; box-shadow: var(--shadow); width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+      .split figure figcaption { font-size: 13px; color: var(--text-soft); margin-top: 10px; }
+      .split h2 {
+        font-family: "Source Serif 4", "Noto Serif SC", "Songti SC", Georgia, serif;
+        font-size: clamp(25px, 3.6vw, 36px); font-weight: 900; line-height: 1.3; color: var(--yale-ink); margin: 0 0 14px;
+      }
+      .split p { color: var(--text-soft); margin: 0 0 14px; }
+      .split p strong { color: var(--text); }
+
+      /* Course steps */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+      @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+      .step {
+        position: relative; background: var(--surface-2); border-radius: 10px; padding: 24px 22px 20px;
+        border-top: 4px solid var(--yale-mid);
+      }
+      .step .num {
+        font-family: "Source Serif 4", Georgia, serif; font-size: 30px; font-weight: 700; color: var(--yale-mid); line-height: 1;
+      }
+      .step h3 { margin: 10px 0 8px; font-size: 17px; color: var(--yale-ink); }
+      .step p { margin: 0; font-size: 14.5px; color: var(--text-soft); }
+      .step .arrow { position: absolute; right: -16px; top: 50%; transform: translateY(-50%); z-index: 2; color: var(--yale-mid); font-size: 20px; font-weight: 700; }
+      @media (max-width: 820px) { .step .arrow { display: none; } }
+
+      /* Growth before/after */
+      .growth {
+        margin-top: 22px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch;
+      }
+      @media (max-width: 700px) { .growth { grid-template-columns: 1fr; } .growth .g-arrow { transform: rotate(90deg); margin: 0 auto; } }
+      .growth .g-box { border-radius: 10px; padding: 22px; }
+      .growth .g-before { background: var(--surface); border: 1px dashed var(--yale-sky); }
+      .growth .g-after { background: var(--yale-deep); color: #eaf2fb; }
+      .growth .g-label { font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; margin-bottom: 8px; }
+      .growth .g-before .g-label { color: var(--text-soft); }
+      .growth .g-after .g-label { color: var(--gold-bright); }
+      .growth .g-box p { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.55; }
+      .growth .g-after p { color: #fff; }
+      .growth .g-arrow { align-self: center; font-size: 26px; color: var(--yale-mid); font-weight: 700; }
+
+      /* Three stages */
+      .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
+      @media (max-width: 820px) { .stages { grid-template-columns: 1fr; } }
+      .stage { padding: 28px 26px; }
+      .stage + .stage { border-left: 1px solid var(--line); }
+      @media (max-width: 820px) { .stage + .stage { border-left: 0; border-top: 1px solid var(--line); } }
+      .stage .s-tag { font-size: 12.5px; font-weight: 700; letter-spacing: 0.18em; color: var(--gold); }
+      .stage h3 { font-family: "Source Serif 4", "Noto Serif SC", Georgia, serif; font-size: 21px; margin: 8px 0 10px; color: var(--yale-ink); }
+      .stage p { margin: 0; font-size: 14.5px; color: var(--text-soft); }
+
+      /* Itinerary */
+      .weeks { display: flex; flex-direction: column; gap: 22px; }
+      .week {
+        display: grid; grid-template-columns: 300px 1fr; background: var(--surface);
+        border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+      }
+      @media (max-width: 820px) { .week { grid-template-columns: 1fr; } }
+      .week figure { margin: 0; min-height: 200px; }
+      .week figure img { width: 100%; height: 100%; object-fit: cover; }
+      .week-body { padding: 26px 28px; }
+      .week-body .w-tag {
+        display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em;
+        color: var(--yale); background: var(--yale-pale); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px;
+      }
+      .week-body h3 { margin: 0 0 12px; font-size: 20px; color: var(--yale-ink); line-height: 1.4; }
+      .week-body ul { margin: 0; padding-left: 1.15em; color: var(--text-soft); font-size: 15px; }
+      .week-body li { margin-bottom: 6px; }
+      .week-body li strong { color: var(--text); }
+
+      /* Program itineraries (21-day / 14-day) */
+      .prog { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 28px; }
+      .prog figure { margin: 0; height: 220px; }
+      .prog figure img { width: 100%; height: 100%; object-fit: cover; }
+      @media (max-width: 600px) { .prog figure { height: 170px; } }
+      .prog-inner { padding: 26px 28px 28px; }
+      @media (max-width: 600px) { .prog-inner { padding: 20px 18px 22px; } }
+      .prog-badge { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; color: var(--yale); background: var(--yale-pale); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+      .prog-inner h3 { margin: 0 0 6px; font-size: 22px; color: var(--yale-ink); line-height: 1.35; font-family: "Source Serif 4", "Noto Serif SC", Georgia, serif; }
+      .prog-dates { margin: 0 0 4px; font-size: 15.5px; font-weight: 700; color: var(--text); overflow-wrap: break-word; }
+      @media (max-width: 600px) { .prog-dates { font-size: 14px; line-height: 1.55; } }
+      .prog-loc { margin: 0; font-size: 14px; color: var(--text-soft); }
+      .phase { margin-top: 24px; }
+      .phase h4 { margin: 0 0 6px; font-size: 17px; color: var(--yale-ink); line-height: 1.45; padding-bottom: 8px; border-bottom: 2px solid var(--yale-pale); }
+      .day-list { list-style: none; margin: 0; padding: 0; }
+      .day-list li { padding: 10px 0; font-size: 15px; color: var(--text-soft); line-height: 1.6; }
+      .day-list li + li { border-top: 1px solid var(--line); }
+      .day-list li strong { display: block; color: var(--yale-ink); font-size: 15px; margin-bottom: 2px; }
+
+      /* University visits */
+      .uni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      @media (max-width: 900px) { .uni-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 460px) { .uni-grid { grid-template-columns: 1fr; } }
+      .uni { border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+      .uni img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+      .uni .u-body { padding: 14px 16px 16px; }
+      .uni h3 { margin: 0; font-size: 16.5px; color: var(--yale-ink); }
+      .uni p { margin: 2px 0 0; font-size: 13px; color: var(--text-soft); }
+
+      /* Sights strip */
+      .sights { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 700px) { .sights { grid-template-columns: 1fr; } }
+      .sight { position: relative; border-radius: 12px; overflow: hidden; min-height: 240px; }
+      .sight img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .sight .s-cap {
+        position: absolute; left: 0; right: 0; bottom: 0; padding: 42px 20px 16px; color: #fff;
+        background: linear-gradient(to top, rgba(0, 25, 48, 0.82), rgba(0, 25, 48, 0));
+      }
+      .sight .s-cap h3 { margin: 0; font-size: 19px; }
+      .sight .s-cap p { margin: 2px 0 0; font-size: 13.5px; color: #d7e6f5; }
+
+      /* Camp gallery */
+      .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      @media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }
+      .g-item { margin: 0; }
+      .g-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; box-shadow: var(--shadow); }
+      .g-item.g-wide { grid-column: 1 / -1; }
+      .g-item.g-wide img { aspect-ratio: 1508 / 866; }
+      @media (max-width: 700px) { .g-item.g-wide img { aspect-ratio: 4 / 3; } }
+      .g-item.g-natural img { aspect-ratio: auto; height: auto; object-fit: contain; background: var(--surface); }
+      /* Lecture-slide screenshot: shown enlarged, full gallery width, natural proportions */
+      .g-item.g-lecture { grid-column: 1 / -1; }
+      .g-item.g-lecture img { aspect-ratio: auto; height: auto; object-fit: contain; background: var(--surface); }
+      .g-item figcaption { font-size: 13.5px; color: var(--text-soft); margin-top: 9px; }
+
+      /* Professor photo (from the camp poster) */
+      .prof-photo { margin: 0 0 18px; }
+      .prof-photo img { border-radius: 10px; box-shadow: var(--shadow); width: 100%; }
+      .prof-photo figcaption { font-size: 13px; color: var(--text-soft); margin-top: 10px; }
+
+      /* Embedded video */
+      .video-frame { margin: 0 auto; max-width: 880px; }
+      .video-frame video {
+        width: 100%; aspect-ratio: 960 / 544; display: block;
+        border-radius: 12px; box-shadow: var(--shadow); background: #000;
+      }
+      .video-cap { font-size: 13.5px; color: var(--text-soft); margin-top: 10px; text-align: center; }
+
+      /* Admissions info */
+      .info-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+      @media (max-width: 820px) { .info-wrap { grid-template-columns: 1fr; } }
+      .elig { background: var(--yale-pale); border-radius: 12px; padding: 26px; }
+      .elig h3 { margin: 0 0 14px; font-size: 19px; color: var(--yale-ink); }
+      .elig ul { margin: 0; padding-left: 1.15em; color: var(--text); font-size: 15.5px; }
+      .elig li { margin-bottom: 8px; }
+      .info-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+      .info-table caption { text-align: left; font-weight: 700; font-size: 17px; color: var(--yale-ink); padding: 0 0 12px; }
+      .info-table th, .info-table td { text-align: left; padding: 14px 18px; font-size: 15px; vertical-align: top; }
+      .info-table tr + tr th, .info-table tr + tr td { border-top: 1px solid var(--line); }
+      .info-table th { width: 38%; color: var(--text-soft); font-weight: 600; background: var(--surface-2); }
+      .tba {
+        display: inline-block; font-weight: 700; color: var(--gold);
+        border: 1px solid currentColor; border-radius: 999px; padding: 1px 12px; font-size: 13.5px;
+      }
+      .info-note { margin-top: 14px; font-size: 14px; color: var(--text-soft); }
+      .info-note a { font-weight: 700; }
+
+      /* Fee note */
+      .fee-box {
+        margin-top: 18px; background: var(--surface); border: 1px solid var(--gold); border-radius: 12px;
+        padding: 20px 22px; box-shadow: var(--shadow);
+      }
+      .fee-box h3 { margin: 0 0 8px; font-size: 17px; color: var(--yale-ink); }
+      .fee-box p { margin: 0; font-size: 15px; color: var(--text-soft); }
+      .fee-box p strong { color: var(--text); }
+      .fee-box a { font-weight: 700; }
+
+      /* Footer */
+      footer { margin-top: clamp(56px, 9vw, 96px); background: var(--yale-deep); color: #cfe1f2; }
+      .foot-in { max-width: 1180px; margin: 0 auto; padding: 44px 20px 36px; }
+      .foot-brand { font-family: "Source Serif 4", Georgia, serif; font-size: 21px; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
+      .foot-in p { margin: 8px 0 0; font-size: 14.5px; max-width: 44em; }
+      .foot-in a { color: #fff; font-weight: 700; }
+      .foot-line { border-top: 1px solid rgba(255,255,255,0.18); margin-top: 28px; padding-top: 18px; font-size: 13px; color: #9db9d6; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+      /* ---------- Chat assistant ---------- */
+      .chat-fab {
+        position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 200;
+        display: inline-flex; align-items: center; gap: 9px;
+        background: var(--gold-bright); color: #231a00;
+        border: 0; border-radius: 999px; padding: 13px 20px 13px 15px;
+        font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+        box-shadow: 0 10px 28px rgba(0, 25, 48, 0.32);
+      }
+      .chat-fab svg { width: 21px; height: 21px; flex: none; }
+      .chat-fab:focus-visible { outline: 3px solid var(--yale-mid); outline-offset: 2px; }
+      .chat-panel {
+        position: fixed; right: 18px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 200;
+        width: min(384px, calc(100vw - 24px));
+        height: min(580px, calc(100vh - 120px)); height: min(580px, calc(100dvh - 120px));
+        display: flex; flex-direction: column;
+        background: var(--surface); color: var(--text);
+        border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+        box-shadow: 0 22px 50px rgba(0, 25, 48, 0.3);
+      }
+      .chat-panel[hidden] { display: none; }
+      .chat-head {
+        background: var(--yale-deep); color: #fff; flex: none;
+        display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+        padding: 14px 16px 12px;
+      }
+      .chat-head h2 { margin: 0; font-size: 16.5px; line-height: 1.35; }
+      .chat-head p { margin: 2px 0 0; font-size: 12.5px; color: var(--yale-sky); }
+      .chat-close {
+        appearance: none; border: 0; background: transparent; color: #fff; cursor: pointer;
+        font-size: 22px; line-height: 1; padding: 2px 6px; border-radius: 6px; flex: none;
+      }
+      .chat-close:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
+      .chat-body {
+        flex: 1; overflow-y: auto; padding: 14px 14px 8px;
+        display: flex; flex-direction: column; gap: 10px;
+        background: var(--bg);
+      }
+      .msg { max-width: 88%; padding: 9px 13px; border-radius: 12px; font-size: 14.5px; line-height: 1.6; overflow-wrap: break-word; }
+      .msg.bot { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+      .msg.user { align-self: flex-end; background: var(--yale); color: #fff; border-bottom-right-radius: 4px; }
+      @media (prefers-color-scheme: dark) { .msg.user { color: #0a1e36; } }
+      .msg a { color: var(--yale-mid); font-weight: 700; }
+      .msg.user a { color: inherit; }
+      .chat-chips {
+        flex: none; display: flex; flex-wrap: wrap; gap: 7px;
+        padding: 10px 14px; border-top: 1px solid var(--line); background: var(--surface);
+      }
+      .chip {
+        appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600;
+        color: var(--yale); background: var(--yale-pale);
+        border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px;
+      }
+      .chip:hover, .chip:focus-visible { border-color: var(--yale-mid); }
+      .chip:focus-visible { outline: 2px solid var(--yale-mid); outline-offset: 1px; }
+      .chat-form {
+        flex: none; display: flex; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+        border-top: 1px solid var(--line); background: var(--surface);
+      }
+      .chat-form input {
+        flex: 1; min-width: 0; font: inherit; font-size: 15px;
+        padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+        background: var(--surface); color: var(--text);
+      }
+      .chat-form input:focus { outline: 2px solid var(--yale-mid); outline-offset: 0; border-color: transparent; }
+      .chat-send {
+        appearance: none; border: 0; cursor: pointer; flex: none;
+        background: var(--yale-deep); color: #fff; font: inherit; font-size: 14.5px; font-weight: 700;
+        padding: 10px 16px; border-radius: 8px;
+      }
+      .chat-send:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+      @media (max-width: 560px) {
+        .chat-fab { right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); padding: 12px 16px 12px 13px; font-size: 14px; }
+        .chat-panel {
+          right: 12px; bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+          width: calc(100vw - 24px);
+          height: min(560px, calc(100vh - 150px)); height: min(560px, calc(100dvh - 150px));
+        }
+      }
+    </style>
+  </head>
+  <body data-lang="zh">
+    <header class="topbar">
+      <div class="topbar-in">
+        <div class="brand">
+          <span class="brand-name" data-zh>2027 加拿大青少年工程科研探索营</span>
+          <span class="brand-name" data-en>Canada Young Engineers Research &amp; Innovation Camp 2027</span>
+          <span class="brand-sub" data-zh>多伦多 · 蒙特利尔 · 渥太华 · 尼亚加拉地区 · 滑铁卢 · 加拿大</span>
+          <span class="brand-sub" data-en>Toronto · Montreal · Ottawa · Niagara Region · Waterloo, Canada</span>
+        </div>
+        <div class="lang-toggle" role="group" aria-label="Language / 语言">
+          <button type="button" id="btn-zh" aria-pressed="true">中文</button>
+          <button type="button" id="btn-en" aria-pressed="false">English</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <div class="hero">
+      <img class="hero-bg" src="asset01.jpg" alt="麦吉尔大学校园夏日草坪 / McGill University campus in summer" />
+      <div class="hero-in">
+        <span class="hero-eyebrow" data-zh>2027 · 招生进行中</span>
+        <span class="hero-eyebrow" data-en>2027 · NOW ENROLLING</span>
+        <h1 data-zh>2027 加拿大青少年工程科研探索营</h1>
+        <h1 data-en>Canada Young Engineers Research &amp; Innovation Camp 2027</h1>
+        <p class="tagline" data-zh>走进真实大学工程实验室，与国际获奖科学家团队一起探索未来</p>
+        <p class="tagline" data-en>Step into real university engineering laboratories — and explore the future with an internationally award-winning team of scientists</p>
+        <p class="lede" data-zh>深入探访加拿大顶尖大学，体验大学生活。你的孩子将得到：</p>
+        <ul class="hero-points" data-zh>
+          <li><strong>深入探访四所顶尖大学</strong>：多伦多大学、麦克马斯特大学、滑铁卢大学、麦吉尔大学</li>
+          <li><strong>走进麦吉尔真实纳米实验室</strong>：亲手操作科研设备，做 3D 打印与工程项目</li>
+          <li><strong>搞笑诺贝尔奖得主曹长宏教授团队指导</strong>：教授与博士、研究生每日参与</li>
+          <li><strong>可选 EPS3O 学分课程</strong>：安省 OSSD 演讲与表达技能课程，自愿选修，适合 10 年级及以上学生</li>
+          <li><strong>分段住宿生活体验</strong>：多伦多段住本地Homestay、蒙特利尔段住麦吉尔大学宿舍，提前体验当地生活与真正的大学生活</li>
+        </ul>
+        <p class="lede" data-en>Discover Canada's top universities up close — and experience university life. Your child will get:</p>
+        <ul class="hero-points" data-en>
+          <li><strong>Four top universities, up close</strong>: the University of Toronto, McMaster University, the University of Waterloo, and McGill University</li>
+          <li><strong>McGill's real nanoengineering laboratory</strong>: hands-on with research equipment, 3D printing, and engineering projects</li>
+          <li><strong>Guidance from Ig Nobel laureate Professor Changhong Cao's team</strong>: the professor and his PhD and master's researchers, involved every day</li>
+          <li><strong>Optional EPS3O credit course</strong>: the Ontario OSSD Presentation and Speaking Skills course, taken by choice, suitable for students in Grade 10 and above</li>
+          <li><strong>Segmented accommodation</strong>: Toronto segment local homestay, Montreal segment McGill university dormitory — experience local life and real university life, ahead of time</li>
+        </ul>
+        <div class="hero-facts">
+          <span data-zh>21 天营期：2027 年 7 月 18 日至 8 月 7 日</span><span data-en>21-day camp: July 18 to August 7, 2027</span>
+          <span data-zh>14 天营期：2027 年 7 月 23 日至 8 月 5 日</span><span data-en>14-day camp: July 23 to August 5, 2027</span>
+          <span data-zh>13–17 岁</span><span data-en>Ages 13–17</span>
+          <span data-zh>每期只招 25 人，招满截止</span><span data-en>Only 25 places per session — enrolment closes when full</span>
+          <span class="fact-strong" data-zh>需面试通过才能入学</span><span class="fact-strong" data-en>Admission requires passing an interview</span>
+          <span data-zh>多伦多段本地Homestay · 蒙特利尔段麦吉尔大学宿舍 · 2 人一间</span><span data-en>Toronto segment local homestay · Montreal segment McGill university dormitory · 2 students per room</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#itinerary" data-zh>查看行程安排</a>
+          <a class="btn btn-gold" href="#itinerary" data-en>See the itineraries</a>
+          <a class="btn btn-ghost" href="#apply" data-zh>报名信息</a>
+          <a class="btn btn-ghost" href="#apply" data-en>Admissions &amp; how to apply</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- ================= HIGHLIGHTS ================= -->
+      <section id="highlights">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>核心亮点</h2>
+          <h2 data-en>Program highlights</h2>
+          <p data-zh>不是走马观花的参观团：实验室、课堂、演讲——每一项收获都真实可查。</p>
+          <p data-en>Not a sightseeing tour. A working laboratory, real coursework, a final presentation, and work you take home.</p>
+        </div>
+        <div class="hl-grid">
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.3L4.8 18a2 2 0 0 0 1.8 3h10.8a2 2 0 0 0 1.8-3L14 9.3V3"/><path d="M7.5 15h9"/></svg></div>
+            <h3 data-zh>真实大学工程科研实验室</h3>
+            <h3 data-en>Real university engineering research laboratories</h3>
+            <p data-zh>走进加拿大真实大学工程实验室，近距离接触先进科研设备，体验国际一流的研究环境。</p>
+            <p data-en>Step inside a real Canadian university engineering laboratory, get close to advanced research equipment, and experience a world-class research environment.</p>
+          </article>
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></div>
+            <h3 data-zh>曹长宏教授团队每日参与指导</h3>
+            <h3 data-en>Professor Cao's team, involved every day</h3>
+            <p data-zh>由加拿大工程领域专家曹长宏教授带领——多伦多大学工程学院工程博士、MIT 工程博士后、麦吉尔大学工程系终身教授；博士研究生和硕士生团队每日参与指导，分享学术经验，启发学生的科研兴趣与创新思维。</p>
+            <p data-en>Led by Professor Changhong Cao — PhD from the University of Toronto's Faculty of Engineering, postdoctoral fellow at MIT, and tenured professor in McGill's Faculty of Engineering. His PhD and master's students take part in guidance every day, sharing academic experience and sparking students' research curiosity and innovative thinking.</p>
+          </article>
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+            <h3 data-zh>3D 打印、纳米科技与工程实践</h3>
+            <h3 data-en>3D printing, nanotechnology &amp; engineering practice</h3>
+            <p data-zh>通过 3D 打印、纳米科技等动手实践活动，将创意转化为真实作品，提升工程思维与问题解决能力。</p>
+            <p data-en>Through hands-on activities in 3D printing and nanotechnology, students turn ideas into real creations, building engineering thinking and problem-solving skills.</p>
+          </article>
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-2 7 5.5-3 5.5 3-2-7"/></svg></div>
+            <h3 data-zh>学分课程 EPS3O（可选修）</h3>
+            <h3 data-en>Credit course EPS3O (optional)</h3>
+            <p data-zh>可自愿选修安省 OSSD 课程 EPS3O（Presentation and Speaking Skills，演讲与表达技能，11 年级 Open 课程），提升英文表达、演讲与展示能力。<strong>学分课适合 10 年级及以上学生。</strong>学分属于可选项，不属于营期必含内容；学分取得须符合课程要求与考核标准。</p>
+            <p data-en>Students may optionally take the Ontario OSSD course EPS3O (Presentation and Speaking Skills, a Grade 11 Open course) to strengthen English expression, public speaking, and presentation skills. <strong>The credit course is suitable for students in Grade 10 and above.</strong> The credit is a voluntary option, not part of the standard camp program; earning it requires meeting the course requirements and assessment standards.</p>
+          </article>
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6L12 16.9 6.6 19.6l1-6L3.3 9.4l6-.9Z"/></svg></div>
+            <h3 data-zh>小组合作与学术表达</h3>
+            <h3 data-en>Teamwork &amp; academic presentation</h3>
+            <p data-zh>与来自不同背景的同学组成小组，在教授和研究生的指导下开展课题讨论，培养团队合作、批判性思维与学术表达能力。</p>
+            <p data-en>Working in small groups with classmates from different backgrounds, students discuss project topics under the guidance of professors and graduate researchers — building teamwork, critical thinking, and academic presentation skills.</p>
+          </article>
+          <article class="hl-card">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+            <h3 data-zh>分段住宿沉浸式生活</h3>
+            <h3 data-en>Immersive segmented accommodation life</h3>
+            <p data-zh>住宿按段安排：多伦多段入住本地Homestay、蒙特利尔段入住麦吉尔大学宿舍，体验真实的当地生活与校园生活，感受多元文化与独立成长。另外，完成实验室课程的学员将获得结营证书，成绩位列 TOP 10% 的优秀学员还可获得教授推荐信。</p>
+            <p data-en>Accommodation is arranged by segment: Toronto segment local homestay, Montreal segment McGill university dormitory — experience real local and campus life, multicultural exchange, and independent growth. Students who complete the lab program also receive a certificate of completion, and those finishing in the top 10% may earn a professor's reference letter.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= FUN SCIENCE: IG NOBEL ================= -->
+      <section id="fun-science">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>趣味科学：当领军教授拿了搞笑诺贝尔奖</h2>
+          <h2 data-en>Fun science: when the lead professor wins an Ig Nobel Prize</h2>
+        </div>
+        <div class="split">
+          <div>
+            <figure class="prof-photo">
+              <img src="asset02.jpg" alt="曹长宏教授与蚊子玩偶合影（营地海报主图） / Professor Changhong Cao with the mosquito plush from his award-winning research (camp poster photo)" loading="lazy" />
+              <figcaption data-zh>曹长宏教授与蚊子玩偶——他的获奖研究，正是把蚊子的口器用作高分辨率 3D 打印喷嘴。</figcaption>
+              <figcaption data-en>Professor Changhong Cao with the mosquito plush — his award-winning research uses a mosquito's proboscis as a high-resolution 3D-printing nozzle.</figcaption>
+            </figure>
+            <p data-zh>
+              搞笑诺贝尔奖表彰那些「先让人发笑、然后让人思考」的研究。本营领军教授<strong>曹长宏</strong>正是获奖者之一：
+              他的团队开创性地把蚊子的口器用作高分辨率 3D 打印喷嘴——只有约 20 微米宽，相当于头发丝直径的三分之一，
+              这项工艺被命名为 necro-printing。好奇心加上一点幽默感，就是科研最好的起点。
+            </p>
+            <p data-en>
+              The Ig Nobel Prize honours research that "first makes people laugh — and then makes them think." This camp's lead
+              professor, <strong>Changhong Cao</strong>, is one of the laureates: his team pioneered using a mosquito's proboscis as a
+              high-resolution 3D-printing nozzle — only about 20 micrometres wide, a third the diameter of a human hair — a technique
+              dubbed "necro-printing." Curiosity, plus a sense of humour, is where research begins.
+            </p>
+          </div>
+          <figure class="video-frame">
+            <video controls preload="metadata" playsinline poster="asset12.jpg" src="asset01.mp4"></video>
+            <figcaption class="video-cap" data-zh>搞笑诺贝尔奖技术奖：颁奖现场与获奖团队短片（中文字幕 · 约 2 分 22 秒）</figcaption>
+            <figcaption class="video-cap" data-en>The Ig Nobel Technology Prize: the award ceremony and the winning team's short film (Chinese subtitles · approx. 2 min 22 s)</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= LAB FEATURE ================= -->
+      <section>
+        <div class="split">
+          <figure>
+            <img src="asset03.jpg" alt="麦吉尔老师在 McGill NanoFactory 大屏前讲课（2026 年实拍） / A McGill instructor lecturing in front of the McGill NanoFactory screen (2026 camp photo)" loading="lazy" />
+            <figcaption data-zh>2026 年实拍：麦吉尔老师在 McGill NanoFactory 大屏前，讲解纳米尺度成像的阿贝衍射极限。</figcaption>
+            <figcaption data-en>From the 2026 camp: a McGill instructor at the NanoFactory, teaching Abbe's diffraction limit — the physics of imaging at the nanoscale.</figcaption>
+          </figure>
+          <div>
+            <h2 data-zh>在世界顶尖大学的实验室里，亲手做一次工程</h2>
+            <h2 data-en>Do real engineering, hands-on, at a world-class university</h2>
+            <p data-zh>
+              第二周，营地来到蒙特利尔、走进麦吉尔大学：白天在校园里上课、进实验室观摩与实践，
+              晚上住进麦吉尔大学宿舍，提前过一段真正的大学生活。课程由<strong>曹长宏教授团队</strong>指导，
+              博士与研究生每日参与，内容覆盖 <strong>3D 打印、纳米科技与工程项目实践</strong>。
+            </p>
+            <p data-en>
+              In week two the camp reaches Montreal and McGill University: classes and laboratory observation and
+              practice by day, McGill university dormitory by night — a genuine taste of university life. Guided by
+              <strong>Professor Changhong Cao's team</strong>, with PhD and master's researchers involved every day,
+              the lab week covers <strong>3D printing, nanotechnology, and engineering project work</strong>.
+            </p>
+            <p data-zh>结营时，学员带走的不只是照片：麦吉尔大学纳米工程实验室结营证书，以及——对成绩 TOP 10% 的学员——一封教授推荐信。</p>
+            <p data-en>Students leave with more than photos: a certificate from the McGill nanoengineering laboratory and, for the top 10%, a professor's reference letter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= COURSE / GROWTH ================= -->
+      <section id="course">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>英文表达与思辨课程：看得见的思维成长</h2>
+          <h2 data-en>English Expression and Critical Thinking Course: growth in thinking you can see</h2>
+          <p data-zh>
+            演讲不是天赋，是一套可以训练的思维方法。英文表达与思辨课程用三周时间，把「想清楚、说明白」练成每个学员自己的能力。
+          </p>
+          <p data-en>
+            Presenting well is not a talent — it is a trainable way of thinking. Over three weeks, the English Expression and Critical Thinking Course turns "think it through, say it clearly" into every student's own skill.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <h3 data-zh>初阶 · 基础演讲</h3>
+            <h3 data-en>Stage 1 · Foundational speech</h3>
+            <p data-zh>先开口。完成第一次全英文演讲，建立结构意识：观点是什么、论据在哪里、顺序怎么排。</p>
+            <p data-en>Speak first. Deliver a first full English speech and build structural awareness: the claim, the evidence, the order.</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h3 data-zh>进阶 · 小组研讨修订</h3>
+            <h3 data-en>Stage 2 · Seminar revision</h3>
+            <p data-zh>在小组研讨中接受提问与挑战，逐段修订逻辑与表达——在被追问中学会把道理讲透。</p>
+            <p data-en>In small-group seminars, face questions and challenges and revise logic and delivery paragraph by paragraph.</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h3 data-zh>落地 · 全程打磨</h3>
+            <h3 data-en>Stage 3 · Full polish &amp; delivery</h3>
+            <p data-zh>全程一对一打磨，直到结营演讲：独立选题、独立成稿、独立登台，全英文完成。</p>
+            <p data-en>One-on-one polishing all the way to the closing presentation — own topic, own script, own stage, entirely in English.</p>
+          </div>
+        </div>
+        <div class="growth">
+          <div class="g-box g-before">
+            <div class="g-label" data-zh>入营时</div>
+            <div class="g-label" data-en>ON ARRIVAL</div>
+            <p data-zh>不敢开口，讲不完整——有想法，却组织不成一段有逻辑的话。</p>
+            <p data-en>Hesitant to speak, thoughts trailing off — ideas are there, but they don't yet form a logical whole.</p>
+          </div>
+          <div class="g-arrow" aria-hidden="true">→</div>
+          <div class="g-box g-after">
+            <div class="g-label" data-zh>结营时</div>
+            <div class="g-label" data-en>BY CLOSING DAY</div>
+            <p data-zh>人人独立完成一场逻辑清晰的全英文学术演讲——这就是看得见的成长。</p>
+            <p data-en>Every student independently delivers a clear, well-structured academic presentation in English. That is growth you can see.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= THREE STAGES ================= -->
+      <section>
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>三段式进阶</h2>
+          <h2 data-en>A three-stage progression</h2>
+        </div>
+        <div class="stages">
+          <div class="stage">
+            <div class="s-tag" data-zh>第一段</div>
+            <div class="s-tag" data-en>STAGE ONE</div>
+            <h3 data-zh>名校学术深耕</h3>
+            <h3 data-en>Deep immersion in top-university academics</h3>
+            <p data-zh>英文表达与思辨课程打底，麦吉尔实验室课程拉高上限——用名校的学术标准，重新校准对「学好」的理解。</p>
+            <p data-en>The English Expression and Critical Thinking Course as the foundation and McGill lab work raising the ceiling — recalibrating what "learning well" means, by top-university standards.</p>
+          </div>
+          <div class="stage">
+            <div class="s-tag" data-zh>第二段</div>
+            <div class="s-tag" data-en>STAGE TWO</div>
+            <h3 data-zh>能力阶梯进阶</h3>
+            <h3 data-en>A ladder of growing capability</h3>
+            <p data-zh>英文表达与思辨课程三级训练逐级推进：开口、修订、登台。每一步都有反馈，每一次都比上一次讲得更清楚。</p>
+            <p data-en>The English Expression and Critical Thinking Course's three levels build step by step — speak, revise, take the stage — with feedback at every rung and a clearer delivery each time.</p>
+          </div>
+          <div class="stage">
+            <div class="s-tag" data-zh>第三段</div>
+            <div class="s-tag" data-en>STAGE THREE</div>
+            <h3 data-zh>实景留学预演</h3>
+            <h3 data-en>A rehearsal for studying abroad</h3>
+            <p data-zh>多伦多段住本地Homestay、蒙特利尔段住麦吉尔大学宿舍、走四所名校、在真实校园里上课生活——把未来的留学生活，提前实景走一遍。</p>
+            <p data-en>Toronto segment local homestay, Montreal segment McGill university dormitory, walk four famous campuses, study and live where students actually do — a full rehearsal of life abroad.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ITINERARY ================= -->
+      <section id="itinerary">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>行程安排：21 天或 14 天</h2>
+          <h2 data-en>Itineraries: 21-day or 14-day programs</h2>
+          <p data-zh>地点：多伦多、蒙特利尔、渥太华、尼亚加拉地区、滑铁卢，加拿大。以下为行程样表，具体安排以最终公布行程为准。21天版与14天版分别列出如下：</p>
+          <p data-en>Locations: Toronto, Montreal, Ottawa, Niagara Region, Waterloo, Canada. The following is a sample itinerary; the detailed schedule is subject to the final published itinerary. 21-day and 14-day versions are listed below:</p>
+          <p data-zh><strong>深入探访加拿大顶尖大学，体验大学生活。</strong></p>
+          <p data-en><strong>Discover Canada's top universities up close — and experience university life.</strong></p>
+        </div>
+
+        <!-- ===== 21-DAY PROGRAM ===== -->
+        <article class="prog">
+          <figure><img src="asset04.jpg" alt="多伦多大学 St. George 主校区 / University of Toronto St. George campus" loading="lazy" /></figure>
+          <div class="prog-inner">
+            <div data-zh>
+              <span class="prog-badge">21 天版</span>
+              <h3>21 天完整行程</h3>
+              <p class="prog-loc">地点：多伦多、蒙特利尔、渥太华、尼亚加拉地区、滑铁卢，加拿大</p>
+
+              <div class="phase">
+                <h4>第一阶段 – 学术基础（多伦多）</h4>
+                <ul class="day-list">
+                  <li>抵达多伦多；入住本地Homestay。</li>
+                  <li>每日结构化 EPS3O 学分课程；老师带领的学术小组项目。</li>
+                  <li>老师带领的多伦多文化拓展活动。</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>第二阶段 – 大学科研与实验室体验（蒙特利尔 – 麦吉尔大学）</h4>
+                <ul class="day-list">
+                  <li>在老师带领下前往蒙特利尔；入住麦吉尔大学宿舍。</li>
+                  <li>麦吉尔大学学术参访；纳米制造实验室与科研设施介绍。结构化科研模块：“3D 打印的未来应用”；老师带领的实验室实操环节。纳米技术研究展示；机器人编程与操作实践环节。</li>
+                  <li>蒙特利尔教育文化参访（历史与学术场所）。</li>
+                  <li>返回多伦多；渥太华国会山学术参访（公民教育组成部分）。</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>第三阶段 – 加拿大高等教育体验（安省）</h4>
+                <ul class="day-list">
+                  <li>老师带领的尼亚加拉地区教育参访。奥特莱斯购物。</li>
+                  <li>老师带领的多伦多文化拓展活动。</li>
+                  <li>多伦多大学校园导览参访；城市学术环境体验。</li>
+                  <li>麦克马斯特大学学术参访；结营仪式与证书颁发。</li>
+                  <li>继续课程学习与结构化学术项目开发；最终展示与评估准备。最终学术展示。</li>
+                  <li>老师带领的机场送机与离境。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div data-en>
+              <span class="prog-badge">21-DAY PROGRAM</span>
+              <h3>21-Day Program — Full Itinerary</h3>
+              <p class="prog-loc">Locations: Toronto, Montreal, Ottawa, Niagara Region, Waterloo, Canada</p>
+
+              <div class="phase">
+                <h4>Phase 1 – Academic Foundation (Toronto)</h4>
+                <ul class="day-list">
+                  <li>Arrival in Toronto; transfer to local homestay accommodation.</li>
+                  <li>Daily structured EPS3O credit courses; academic group projects led by teachers.</li>
+                  <li>Cultural enrichment activity in Toronto, led by teachers.</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>Phase 2 – University Research &amp; Laboratory Experience (Montreal – McGill University)</h4>
+                <ul class="day-list">
+                  <li>Travel to Montreal, led by teachers; stay in McGill university dormitory.</li>
+                  <li>Guided academic visit to McGill University; Introduction to Nanofabrication Laboratory and research facilities. Structured research module: “Future Applications of 3D Printing”; Hands-on laboratory session led by teachers. Nanotechnology research presentation; Robotics programming and operational practice session.</li>
+                  <li>Educational cultural visit to Montreal (historical and academic sites).</li>
+                  <li>Return to Toronto; academic visit to Parliament Hill in Ottawa (civic education component).</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>Phase 3 – Canadian Higher Education Exposure (Ontario)</h4>
+                <ul class="day-list">
+                  <li>Educational excursion to Niagara Region, led by teachers. Outlet shopping.</li>
+                  <li>Cultural enrichment activity in Toronto, led by teachers.</li>
+                  <li>Guided campus visit to the University of Toronto; Urban academic environment exposure.</li>
+                  <li>Academic visit to McMaster University; Closing ceremony and certificate issuance.</li>
+                  <li>Continued coursework and structured academic project development; Preparation of final presentations and evaluations. Final academic presentations.</li>
+                  <li>Airport transfer and departure, led by teachers.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== 14-DAY PROGRAM ===== -->
+        <article class="prog">
+          <figure><img src="asset01.webp" alt="麦吉尔大学艺术大楼 / The Arts Building, McGill University" loading="lazy" /></figure>
+          <div class="prog-inner">
+            <div data-zh>
+              <span class="prog-badge">14 天版</span>
+              <h3>14 天完整行程</h3>
+              <p class="prog-loc">地点：多伦多、蒙特利尔、渥太华、尼亚加拉地区、滑铁卢，加拿大</p>
+
+              <div class="phase">
+                <h4>第一阶段 – 抵达会合与多伦多（多伦多）</h4>
+                <ul class="day-list">
+                  <li>营员落地并加入团队。</li>
+                  <li>老师带领的多伦多文化拓展活动。</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>第二阶段 – 大学科研与实验室体验（蒙特利尔 – 麦吉尔大学）</h4>
+                <ul class="day-list">
+                  <li>在老师带领下前往蒙特利尔；入住麦吉尔大学宿舍。</li>
+                  <li>麦吉尔大学学术参访；纳米制造实验室与科研设施介绍。结构化科研模块：“3D 打印的未来应用”；老师带领的实验室实操环节。纳米技术研究展示；机器人编程与操作实践环节。</li>
+                  <li>蒙特利尔教育文化参访（历史与学术场所）。</li>
+                  <li>返回多伦多；渥太华国会山学术参访（公民教育组成部分）。</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>第三阶段 – 加拿大高等教育体验（安省）</h4>
+                <ul class="day-list">
+                  <li>老师带领的尼亚加拉地区教育参访。奥特莱斯购物。</li>
+                  <li>老师带领的多伦多文化拓展活动。</li>
+                  <li>多伦多大学校园导览参访；城市学术环境体验。</li>
+                  <li>麦克马斯特大学学术参访；结营仪式与证书颁发。</li>
+                  <li>营员返回家乡。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div data-en>
+              <span class="prog-badge">14-DAY PROGRAM</span>
+              <h3>14-Day Program — Full Itinerary</h3>
+              <p class="prog-loc">Locations: Toronto, Montreal, Ottawa, Niagara Region, Waterloo, Canada</p>
+
+              <div class="phase">
+                <h4>Phase 1 – Arrival &amp; Toronto Foundation (Toronto)</h4>
+                <ul class="day-list">
+                  <li>Campers land &amp; join the group.</li>
+                  <li>Cultural enrichment activity in Toronto, led by teachers.</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>Phase 2 – University Research &amp; Laboratory Experience (Montreal – McGill University)</h4>
+                <ul class="day-list">
+                  <li>Travel to Montreal, led by teachers; stay in McGill university dormitory.</li>
+                  <li>Guided academic visit to McGill University; Introduction to Nanofabrication Laboratory and research facilities. Structured research module: “Future Applications of 3D Printing”; Hands-on laboratory session led by teachers. Nanotechnology research presentation; Robotics programming and operational practice session.</li>
+                  <li>Educational cultural visit to Montreal (historical and academic sites).</li>
+                  <li>Return to Toronto; academic visit to Parliament Hill in Ottawa (civic education component).</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>Phase 3 – Canadian Higher Education Exposure (Ontario)</h4>
+                <ul class="day-list">
+                  <li>Educational excursion to Niagara Region, led by teachers. Outlet shopping.</li>
+                  <li>Cultural enrichment activity in Toronto, led by teachers.</li>
+                  <li>Guided campus visit to the University of Toronto; Urban academic environment exposure.</li>
+                  <li>Academic visit to McMaster University; Closing ceremony and certificate issuance.</li>
+                  <li>Campers back to hometown.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= UNIVERSITIES ================= -->
+      <section id="universities">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>名校参访与城市探索</h2>
+          <h2 data-en>University visits &amp; city exploration</h2>
+          <p data-zh>在科研之外，走进加拿大名校与经典地标，拓展国际视野。项目不仅聚焦科研探索，也帮助学生了解不同的校园文化、专业方向与城市气质，让学习与见闻同时发生。</p>
+          <p data-en>Beyond research, students step onto famous Canadian campuses and into classic landmarks, broadening their international outlook — learning about different campus cultures, fields of study, and the character of each city, so that learning and seeing the world happen together.</p>
+        </div>
+        <div class="uni-grid">
+          <article class="uni">
+            <img src="asset02.webp" alt="多伦多大学 University College 主楼 / University College, University of Toronto" />
+            <div class="u-body">
+              <h3 data-zh>多伦多大学</h3>
+              <h3 data-en>University of Toronto</h3>
+              <p data-zh>加拿大顶尖学府，世界一流研究型大学</p>
+              <p data-en>Canada's top institution — a world-class research university</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset05.jpg" alt="滑铁卢大学现代玻璃教学楼（海报图） / A modern glass building at the University of Waterloo (poster image)" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>滑铁卢大学</h3>
+              <h3 data-en>University of Waterloo</h3>
+              <p data-zh>全球知名的工程与计算机科学强校</p>
+              <p data-en>World-renowned for engineering and computer science</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset06.jpg" alt="麦克马斯特大学校园建筑 / McMaster University campus" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>麦克马斯特大学</h3>
+              <h3 data-en>McMaster University</h3>
+              <p data-zh>以科研创新和健康科学闻名</p>
+              <p data-en>Known for research innovation and health sciences</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset03.webp" alt="麦吉尔大学艺术大楼 / The Arts Building, McGill University" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>麦吉尔大学</h3>
+              <h3 data-en>McGill University</h3>
+              <p data-zh>加拿大历史最悠久的大学之一</p>
+              <p data-en>One of Canada's oldest universities</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset04.webp" alt="多伦多城市景色：白天的 CN Tower 与天际线，蓝天白云下从港湾望去（实景照片） / Toronto cityscape: the CN Tower and skyline in daytime, seen from the harbour under a blue sky (photograph)" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>多伦多城市景色</h3>
+              <h3 data-en>Toronto</h3>
+              <p data-zh>现代都市与多元文化的完美融合</p>
+              <p data-en>A modern metropolis where diverse cultures meet</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset07.jpg" alt="渥太华国会山和平塔（海报图） / The Peace Tower, Parliament Hill, Ottawa (poster image)" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>渥太华国会山</h3>
+              <h3 data-en>Parliament Hill, Ottawa</h3>
+              <p data-zh>加拿大的政治与历史地标</p>
+              <p data-en>Canada's political and historic landmark</p>
+            </div>
+          </article>
+          <article class="uni">
+            <img src="asset08.jpg" alt="尼亚加拉大瀑布 / Niagara Falls" loading="lazy" />
+            <div class="u-body">
+              <h3 data-zh>尼亚加拉大瀑布</h3>
+              <h3 data-en>Niagara Falls</h3>
+              <p data-zh>世界闻名的自然奇观，感受大自然的震撼之美</p>
+              <p data-en>A world-famous natural wonder — nature at its most awe-inspiring</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= SPEAKING FEATURE ================= -->
+      <section>
+        <div style="max-width:46em;">
+          <div>
+            <h2 data-zh style="font-family:'Source Serif 4','Noto Serif SC','Songti SC',Georgia,serif;font-size:clamp(25px,3.6vw,36px);font-weight:900;line-height:1.3;color:var(--yale-ink);margin:0 0 14px;">结营那天，每个人都要登台</h2>
+            <h2 data-en style="font-family:'Source Serif 4','Noto Serif SC','Songti SC',Georgia,serif;font-size:clamp(25px,3.6vw,36px);font-weight:900;line-height:1.3;color:var(--yale-ink);margin:0 0 14px;">On closing day, everyone takes the stage</h2>
+            <p data-zh style="color:var(--text-soft);margin:0 0 14px;">
+              没有例外，也没有代讲。经过三周的课程、研讨与打磨，每位学员都要独立完成一场
+              <strong style="color:var(--text);">逻辑清晰的全英文学术演讲</strong>——这是英文表达与思辨课程的终点，也是家长最能直观看到孩子变化的时刻。
+            </p>
+            <p data-en style="color:var(--text-soft);margin:0 0 14px;">
+              No exceptions, and no substitutes. After three weeks of coursework, seminars, and polishing, every student
+              independently delivers <strong style="color:var(--text);">a clear, well-structured academic presentation in English</strong> — the finish
+              line of the English Expression and Critical Thinking Course, and the moment parents see the change most directly.
+            </p>
+            <p data-zh style="color:var(--text-soft);margin:0 0 14px;">演讲主题、实验收获、名校见闻——把三周所学讲给所有人听，本身就是最好的结营作品。</p>
+            <p data-en style="color:var(--text-soft);margin:0;">The topic, the lab work, the universities seen — presenting three weeks of learning to a real audience is itself the finest closing project.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CAMP GALLERY ================= -->
+      <section id="gallery">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>营地风采</h2>
+          <h2 data-en>Camp highlights</h2>
+          <p data-zh>以下为 2026 年营地实拍与课程资料：曹长宏教授讲课、麦吉尔教室授课，以及课程使用的 McGill NanoFactory 讲义截图（已在图注中单独标明）。</p>
+          <p data-en>Photographs and course material from the 2026 camp: Professor Changhong Cao lecturing, a class in a McGill classroom, and a screenshot of the McGill NanoFactory lecture slides used in class, labelled as such.</p>
+        </div>
+        <div class="gallery">
+          <figure class="g-item g-natural">
+            <img src="asset09.jpg" alt="曹长宏教授讲课（2026 年营地实拍）：在麦吉尔工程学院教室里为学员讲课，学员背对镜头听课 / Professor Changhong Cao lecturing (2026 camp photo): teaching in a McGill Faculty of Engineering classroom, with students listening with their backs to the camera" loading="lazy" />
+            <figcaption data-zh>曹长宏教授讲课（2026 年营地实拍）：在麦吉尔工程学院教室里为学员讲课。</figcaption>
+            <figcaption data-en>Professor Changhong Cao lecturing (from the 2026 camp): teaching students in a McGill Faculty of Engineering classroom.</figcaption>
+          </figure>
+          <figure class="g-item g-natural">
+            <img src="asset10.jpg" alt="2026 年实拍：麦吉尔教室里，老师结合大屏上的 McGill NanoFactory 讲义为学员讲课 / From the 2026 camp: in a McGill classroom, the instructor teaching from the McGill NanoFactory slides on the big screen" loading="lazy" />
+            <figcaption data-zh>2026 年实拍：麦吉尔教室里，老师结合大屏上的 McGill NanoFactory 讲义为学员讲课。</figcaption>
+            <figcaption data-en>From the 2026 camp: in a McGill classroom, the instructor teaches from the McGill NanoFactory slides shown on the big screen.</figcaption>
+          </figure>
+          <figure class="g-item g-lecture">
+            <img src="asset11.jpg" alt="课程讲义截图（非营地现场照片）：McGill NanoFactory 讲义——自然界的纳米结构，从玫瑰花瓣、荷叶到壁虎的脚 / Lecture slides (not a camp photograph): the McGill NanoFactory slides on nanostructures in nature — from rose petals and lotus leaves to gecko feet" loading="lazy" />
+            <figcaption data-zh>课程讲义截图（非营地现场照片）：McGill NanoFactory 讲义——自然界的纳米结构，从玫瑰花瓣、荷叶到壁虎的脚。</figcaption>
+            <figcaption data-en>Lecture slides, not a camp photograph: the McGill NanoFactory slides on nanostructures in nature — from rose petals and lotus leaves to gecko feet.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= SAFETY & DAILY LIFE ================= -->
+      <section id="safety">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>安全与生活</h2>
+          <h2 data-en>Safety &amp; daily life</h2>
+          <p data-zh>营期生活安排如下；保险、过敏／用药、紧急联系与营期家长沟通方式等，详情请加微信咨询。</p>
+          <p data-en>Daily-life arrangements for the camp are below. For details on insurance, allergies and medication, emergency contacts, and parent updates during the camp, please contact us on WeChat for details.</p>
+        </div>
+        <div class="hl-grid">
+          <article class="hl-card">
+            <h3 data-zh>小班带队、每团不超过25人</h3>
+            <h3 data-en>Small-group supervision, maximum 25 students per group</h3>
+            <p data-zh>小班带队、每团不超过25人。</p>
+            <p data-en>Small-group supervision, with a maximum of 25 students per group.</p>
+          </article>
+          <article class="hl-card">
+            <h3 data-zh>住宿：多伦多段本地Homestay、蒙特利尔段麦吉尔大学宿舍 · 2 人一间</h3>
+            <h3 data-en>Accommodation: Toronto segment local homestay, Montreal segment McGill university dormitory · 2 students per room</h3>
+            <p data-zh>住宿按段安排：多伦多段本地Homestay、蒙特利尔段麦吉尔大学宿舍，2 人一间。</p>
+            <p data-en>Accommodation by segment: Toronto segment local homestay, Montreal segment McGill university dormitory, with 2 students per room.</p>
+          </article>
+          <article class="hl-card">
+            <h3 data-zh>餐饮：一日三餐</h3>
+            <h3 data-en>Meals: three meals a day</h3>
+            <p data-zh>营期提供一日三餐。</p>
+            <p data-en>Three meals a day are provided during the camp.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= APPLY ================= -->
+      <section id="apply">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>参团条件与报名信息</h2>
+          <h2 data-en>Who can join &amp; how to apply</h2>
+        </div>
+        <div class="info-wrap">
+          <div class="elig">
+            <h3 data-zh>参团条件</h3>
+            <h3 data-en>Eligibility</h3>
+            <ul data-zh>
+              <li><strong>13–17 岁</strong>在读中学生</li>
+              <li>具备<strong>基本英语交流能力</strong>（入营设有英文摸底测试）</li>
+              <li><strong>需面试通过才能入学</strong></li>
+              <li>每期只招 <strong>25 人</strong>，招满截止</li>
+            </ul>
+            <ul data-en>
+              <li>Secondary-school students aged <strong>13–17</strong></li>
+              <li><strong>Basic English communication skills</strong> (a placement test is held on arrival)</li>
+              <li><strong>Admission requires passing an interview</strong></li>
+              <li>Only <strong>25 places</strong> per session — enrolment closes when full</li>
+            </ul>
+          </div>
+          <div>
+            <table class="info-table">
+              <caption data-zh>2027 年招生信息</caption>
+              <caption data-en>2027 admissions information</caption>
+              <tr>
+                <th data-zh>营期</th><th data-en>Camp dates</th>
+                <td><span data-zh>21 天营期：2027 年 7 月 18 日至 8 月 7 日<br />14 天营期：2027 年 7 月 23 日至 8 月 5 日</span><span data-en>21-day camp: July 18 to August 7, 2027<br />14-day camp: July 23 to August 5, 2027</span></td>
+              </tr>
+              <tr>
+                <th data-zh>项目时长</th><th data-en>Duration</th>
+                <td><span data-zh>21 天 20 晚（含 EPS3O 学分课程）· 14 天 13 晚（不含学分课程）</span><span data-en>21 days / 20 nights (with the EPS3O credit course) · 14 days / 13 nights (without the credit course)</span></td>
+              </tr>
+              <tr>
+                <th data-zh>名额</th><th data-en>Places</th>
+                <td><span data-zh>每期只招 25 人，招满截止</span><span data-en>Only 25 places per session — enrolment closes when full</span></td>
+              </tr>
+              <tr>
+                <th data-zh>入学条件</th><th data-en>Admission requirement</th>
+                <td><span data-zh><strong>需面试通过才能入学</strong></span><span data-en><strong>Admission requires passing an interview</strong></span></td>
+              </tr>
+              <tr>
+                <th data-zh>住宿安排</th><th data-en>Accommodation</th>
+                <td><span data-zh>多伦多段本地Homestay、蒙特利尔段麦吉尔大学宿舍，2 人一间</span><span data-en>Toronto segment local homestay, Montreal segment McGill university dormitory, 2 students per room</span></td>
+              </tr>
+              <tr>
+                <th data-zh>签证</th><th data-en>Visa</th>
+                <td><span data-zh>签证由加方提供邀请函。建议尽早报名、尽早开始办理签证。</span><span data-en>An invitation letter for the visa application is provided by the Canadian side. Families are advised to enrol early and start the visa process as early as possible.</span></td>
+              </tr>
+              <tr>
+                <th data-zh>机票与接机</th><th data-en>Flights &amp; airport pickup</th>
+                <td><span data-zh>费用不含机票；提供多伦多皮尔逊机场接机。</span><span data-en>Airfare is not included; airport pickup is provided at Toronto Pearson Airport.</span></td>
+              </tr>
+              <tr>
+                <th data-zh>报名截止日期</th><th data-en>Application deadline</th>
+                <td><span data-zh>3 月 31 日</span><span data-en>March 31, 2027</span></td>
+              </tr>
+              <tr>
+                <th data-zh>报名方式</th><th data-en>How to apply</th>
+                <td><span data-zh><strong>添加微信索取报名表（微信：rhec_ca）</strong><br />微信：rhec_ca<br />电话：1-647-280-1226</span><span data-en><strong>Add WeChat to request the registration form (WeChat: rhec_ca)</strong><br />WeChat: rhec_ca<br />Tel: 1-647-280-1226</span></td>
+              </tr>
+              <tr>
+                <th data-zh>可选项目</th><th data-en>Optional add-on</th>
+                <td><span data-zh>可选择选修 EPS3O 学分课程 — Presentation and Speaking Skills（演讲与表达技能；自愿选修，非必含项目；适合 10 年级及以上学生）</span><span data-en>Option to take the EPS3O credit course — Presentation and Speaking Skills (voluntary; not included in the standard program; suitable for students in Grade 10 and above)</span></td>
+              </tr>
+            </table>
+            <div class="fee-box">
+              <h3 data-zh>费用说明</h3>
+              <h3 data-en>Fees</h3>
+              <p data-zh>费用详情请加微信获取详细信息。费用不含机票。<br />微信：<strong>rhec_ca</strong><br />电话：<a href="tel:+16472801226">1-647-280-1226</a></p>
+              <p data-en>For fee details, please add us on WeChat for full information. Airfare is not included.<br />WeChat: <strong>rhec_ca</strong><br />Tel: <a href="tel:+16472801226">1-647-280-1226</a></p>
+              <p data-zh style="margin-top:10px;">退费详情请加微信咨询。微信：<strong>rhec_ca</strong>；电话：<a href="tel:+16472801226">1-647-280-1226</a></p>
+              <p data-en style="margin-top:10px;">For refund details, please contact us on WeChat for details. WeChat: <strong>rhec_ca</strong>; Tel: <a href="tel:+16472801226">1-647-280-1226</a></p>
+            </div>
+            <p class="info-note" data-zh>
+              2027 年报名通道将在确定后第一时间公布。最新消息请关注 RHEC 官网
+              <a href="https://rhec.ca" target="_blank" rel="noopener">rhec.ca</a>。
+            </p>
+            <p class="info-note" data-en>
+              The 2027 application channel will be published as soon as it is confirmed.
+              Watch the RHEC website, <a href="https://rhec.ca" target="_blank" rel="noopener">rhec.ca</a>, for updates.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ================= SCHOOL PARTNERSHIPS ================= -->
+      <section id="schools">
+        <div class="sec-head">
+          <div class="rule"></div>
+          <h2 data-zh>学校合作邀请</h2>
+          <h2 data-en>For schools</h2>
+          <p data-zh>诚邀各学校合作：夏令营方案可按学校需求定制，详情欢迎私信咨询。</p>
+          <p data-en>Schools are welcome to inquire: camp programs can be customized to your school's needs. Please contact us via WeChat for details.</p>
+          <div class="school-contact" data-zh>
+            <span>微信 rhec_ca</span>
+            <span>电话 1-647-280-1226</span>
+          </div>
+          <div class="school-contact" data-en>
+            <span>WeChat: rhec_ca</span>
+            <span>Phone: 1-647-280-1226</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot-in">
+        <div class="foot-brand" data-zh>2027 加拿大青少年工程科研探索营</div>
+        <div class="foot-brand" data-en>Canada Young Engineers Research &amp; Innovation Camp 2027</div>
+        <p data-zh>Richmond Hill Education Center &amp; Elton Academy 联合推出</p>
+        <p data-en>Jointly presented by Richmond Hill Education Center &amp; Elton Academy</p>
+        <p><a href="https://rhec.ca" target="_blank" rel="noopener">rhec.ca</a></p>
+        <div class="foot-line">
+          <span data-zh>多伦多 · 蒙特利尔 · 渥太华 · 尼亚加拉地区 · 滑铁卢 · 加拿大</span>
+          <span data-en>Toronto · Montreal · Ottawa · Niagara Region · Waterloo, Canada</span>
+          <span data-zh>具体安排以最终公布行程为准</span>
+          <span data-en>The detailed schedule is subject to the final published itinerary</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= CHAT ASSISTANT ================= -->
+    <button type="button" class="chat-fab" id="chat-fab" aria-haspopup="dialog" aria-expanded="false" aria-controls="chat-panel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+      <span id="chat-fab-label">咨询问答</span>
+    </button>
+    <div class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+      <div class="chat-head">
+        <div>
+          <h2 id="chat-title">在线咨询</h2>
+          <p id="chat-subtitle">常见问题即时解答</p>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="关闭 / Close">×</button>
+      </div>
+      <div class="chat-body" id="chat-body" aria-live="polite"></div>
+      <div class="chat-chips" id="chat-chips"></div>
+      <form class="chat-form" id="chat-form">
+        <input type="text" id="chat-input" autocomplete="off" maxlength="200" aria-label="输入您的问题 / Type your question" />
+        <button type="submit" class="chat-send" id="chat-send">发送</button>
+      </form>
+    </div>
+
+    <script>
+      (function () {
+        var titles = {
+          zh: "2027 加拿大青少年工程科研探索营",
+          en: "Canada Young Engineers Research & Innovation Camp 2027"
+        };
+        var btnZh = document.getElementById("btn-zh");
+        var btnEn = document.getElementById("btn-en");
+        function setLang(lang) {
+          document.body.setAttribute("data-lang", lang);
+          document.documentElement.setAttribute("lang", lang === "zh" ? "zh-CN" : "en");
+          document.title = titles[lang];
+          btnZh.setAttribute("aria-pressed", lang === "zh" ? "true" : "false");
+          btnEn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+        }
+        btnZh.addEventListener("click", function () { setLang("zh"); });
+        btnEn.addEventListener("click", function () { setLang("en"); });
+      })();
+    </script>
+    <script>
+      (function () {
+        "use strict";
+
+        var CONTACT = { wechat: "rhec_ca", phoneDisplay: "1-647-280-1226", phoneHref: "tel:+16472801226" };
+
+        var UI = {
+          zh: {
+            fab: "咨询问答", title: "在线咨询", subtitle: "常见问题即时解答",
+            placeholder: "输入您的问题…", send: "发送",
+            welcome: "您好！我是本营的咨询助手。关于营期、年龄、学分课程、行程、住宿和报名方式的问题都可以问我，也可以点下方按钮快速提问。",
+            fallback: "这个问题我暂时答不上来，怕给您不准确的信息。您可以加微信 <strong>" + CONTACT.wechat + "</strong>，或拨打电话 <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a> 直接咨询，我们会详细为您解答。",
+            chips: [
+              ["dates", "营期是什么时候？"], ["age", "孩子几岁可以参加？"],
+              ["duration", "有哪两种时长？"], ["credit", "EPS3O 学分是必修吗？"],
+              ["lab", "麦吉尔实验室有什么特别？"], ["fee", "费用是多少？"],
+              ["apply", "怎么报名？"], ["visa", "签证和接机怎么办？"],
+              ["safety", "安全与生活怎么样？"]
+            ]
+          },
+          en: {
+            fab: "Ask us", title: "Ask us a question", subtitle: "Instant answers to common questions",
+            placeholder: "Type your question…", send: "Send",
+            welcome: "Hello! I'm the camp's Q&A assistant. Ask me about the dates, ages, the credit course, the itinerary, accommodation, or how to apply — or tap a question below.",
+            fallback: "I don't have an answer for that one yet, and I'd rather not guess. Please add us on WeChat at <strong>" + CONTACT.wechat + "</strong>, or call <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a> and we'll be happy to help in detail.",
+            chips: [
+              ["dates", "When is the camp?"], ["age", "What ages can join?"],
+              ["duration", "What are the two durations?"], ["credit", "Is the EPS3O credit required?"],
+              ["lab", "What's special about the McGill lab?"], ["fee", "How much does it cost?"],
+              ["apply", "How do we apply?"], ["visa", "Visa & airport pickup?"],
+              ["safety", "Safety & daily life?"]
+            ]
+          }
+        };
+
+        var ANSWERS = {
+          dates: {
+            zh: "2027 年有两期营期：<strong>21 天营期为 7 月 18 日至 8 月 7 日</strong>（8 月 8 日送机离境）；<strong>14 天营期为 7 月 23 日至 8 月 5 日</strong>。",
+            en: "There are two sessions in 2027: the <strong>21-day camp runs July 18 to August 7, 2027</strong> (airport departure on August 8), and the <strong>14-day camp runs July 23 to August 5, 2027</strong>."
+          },
+          deadline: {
+            zh: "报名截止日期是 <strong>2027 年 3 月 31 日</strong>。每期只招 25 人，招满截止，建议尽早报名锁定名额。",
+            en: "The application deadline is <strong>March 31, 2027</strong>. Only 25 places are available per session and enrolment closes when full, so we recommend applying early."
+          },
+          age: {
+            zh: "参团学生为 <strong>13–17 岁</strong>在读中学生，并需具备基本英语交流能力（入营设有英文摸底测试）。",
+            en: "The camp is for secondary-school students aged <strong>13–17</strong>, with basic English communication skills (a placement test is held on arrival)."
+          },
+          duration: {
+            zh: "有两种时长：<strong>21 天营期（2027 年 7 月 18 日至 8 月 7 日，含 EPS3O 学分课程）</strong>和 <strong>14 天营期（2027 年 7 月 23 日至 8 月 5 日，不含学分课程）</strong>，可按孩子的安排选择。两个版本的行程都在网站行程板块分别列出。",
+            en: "There are two options: the <strong>21-day camp (July 18 to August 7, 2027, with the EPS3O credit course)</strong> and the <strong>14-day camp (July 23 to August 5, 2027, without the credit course)</strong>. Each program has its own full itinerary in the itinerary section."
+          },
+          credit: {
+            zh: "EPS3O 是安省 OSSD 的演讲与表达技能课程（Presentation and Speaking Skills），<strong>适合 10 年级及以上学生</strong>。它<strong>完全可选</strong>，自愿选修，不是营期必含内容；选择 21 天 20 晚的营期即可包含该课程，学分取得须符合课程要求与考核标准。",
+            en: "EPS3O is the Ontario OSSD Presentation and Speaking Skills course, <strong>suitable for students in Grade 10 and above</strong>. It is <strong>entirely optional</strong> — taken by choice, not part of the standard program. It is included in the 21-day / 20-night option, and earning the credit requires meeting the course requirements and assessment standards."
+          },
+          route: {
+            zh: "行程地点为：<strong>多伦多 · 蒙特利尔 · 渥太华 · 尼亚加拉地区 · 滑铁卢，加拿大</strong>，沿途参访多伦多大学、麦吉尔大学、麦克马斯特大学等名校。",
+            en: "The itinerary locations are: <strong>Toronto · Montreal · Ottawa · Niagara Region · Waterloo, Canada</strong>, with visits to the University of Toronto, McGill, McMaster, and more."
+          },
+          lab: {
+            zh: "本营是<strong>麦吉尔纳米实验室唯一授权的夏令营项目</strong>：学员准入实验室、接触最前沿科研设备，理论与实操结合，真正获取科研体验。课程由<strong>曹长宏教授团队</strong>指导，教授与博士、研究生每日参与。",
+            en: "This is the <strong>only summer camp authorized by McGill's nano laboratory</strong>: students are admitted into the lab with access to cutting-edge research equipment, combining theory with hands-on practice for a genuine research experience. The program is guided by <strong>Professor Changhong Cao's team</strong>, with the professor and his PhD and master's researchers involved every day."
+          },
+          stay: {
+            zh: "学员住宿按段安排：<strong>多伦多段本地Homestay、蒙特利尔段麦吉尔大学宿舍，2 人一间</strong>；小班带队、每团不超过 <strong>25 人</strong>，营期提供<strong>一日三餐</strong>。",
+            en: "Accommodation by segment: <strong>Toronto segment local homestay, Montreal segment McGill university dormitory, 2 students per room</strong>, with <strong>small-group supervision, maximum 25 students per group</strong>, and <strong>three meals a day</strong> are provided."
+          },
+          group: {
+            zh: "每期<strong>只招 25 人，招满截止</strong>。",
+            en: "Each session takes <strong>only 25 students — enrolment closes when full</strong>."
+          },
+          fee: {
+            zh: "本站不列具体费用数字。费用详情请加微信 <strong>" + CONTACT.wechat + "</strong> 获取详细信息，或拨打电话 <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a> 咨询。费用不含机票。退费详情请加微信咨询。",
+            en: "We don't list specific fee figures on this page. For fee details, please add us on WeChat at <strong>" + CONTACT.wechat + "</strong> for full information, or call <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a>. Airfare is not included. For refund details, please contact us on WeChat for details."
+          },
+          apply: {
+            zh: "报名方式：<br />微信：<strong>" + CONTACT.wechat + "</strong><br />电话：<a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a><br /><strong>需面试通过才能入学。</strong>每期只招 25 人，招满截止，请尽早联系我们。",
+            en: "How to apply:<br />WeChat: <strong>" + CONTACT.wechat + "</strong><br />Phone: <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a><br /><strong>Admission requires passing an interview.</strong> Only 25 places are available per session and enrolment closes when full, so please contact us early."
+          },
+          visa: {
+            zh: "签证由<strong>加方提供邀请函</strong>。建议<strong>尽早报名、尽早开始办理</strong>签证。费用不含机票；我们提供<strong>多伦多皮尔逊机场接机</strong>。",
+            en: "An <strong>invitation letter for the visa application is provided by the Canadian side</strong>. Families are advised to <strong>enrol early and start the visa process as early as possible</strong>. Airfare is not included; <strong>airport pickup is provided at Toronto Pearson Airport</strong>."
+          },
+          refund: {
+            zh: "退费详情请加微信咨询。微信：<strong>" + CONTACT.wechat + "</strong>；电话：<a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a>。",
+            en: "For refund details, please contact us on WeChat for details. WeChat: <strong>" + CONTACT.wechat + "</strong>; Tel: <a href='" + CONTACT.phoneHref + "'>" + CONTACT.phoneDisplay + "</a>."
+          },
+          safety: {
+            zh: "小班带队、每团不超过 <strong>25 人</strong>；住宿按段安排：多伦多段本地Homestay、蒙特利尔段麦吉尔大学宿舍 <strong>2 人一间</strong>；营期提供<strong>一日三餐</strong>。保险、过敏／用药、紧急联系与家长沟通方式等详情，请加微信 <strong>" + CONTACT.wechat + "</strong> 咨询。",
+            en: "<strong>Small-group supervision, maximum 25 students per group</strong>; accommodation is by segment — Toronto segment local homestay, Montreal segment McGill university dormitory — with <strong>2 students per room</strong>; and <strong>three meals a day</strong> are provided. For details on insurance, allergies and medication, emergency contacts, and parent updates, please contact us on WeChat at <strong>" + CONTACT.wechat + "</strong>."
+          },
+          greeting: {
+            zh: "您好！关于营期时间、年龄要求、两种时长、EPS3O 学分、行程城市、实验室、住宿和报名方式，都可以直接问我。",
+            en: "Hello! Feel free to ask me about the camp dates, age range, the two durations, the EPS3O credit, the cities, the laboratory, accommodation, or how to apply."
+          }
+        };
+
+        /* Topic matching: checked in order, first hit wins. Keywords cover both languages. */
+        var TOPICS = [
+          ["refund", ["退费", "退款", "refund", "cancellation"]],
+          ["visa", ["签证", "邀请函", "接机", "机票", "皮尔逊", "visa", "invitation letter", "airport pickup", "pearson", "airfare", "flight"]],
+          ["safety", ["师生比", "小班", "带队", "安全与生活", "一日三餐", "三餐", "餐饮", "保险", "过敏", "用药", "紧急联系", "家长沟通", "ratio", "small-group", "supervision", "three meals", "insurance", "allerg", "medication", "emergency contact"]],
+          ["fee", ["费用", "多少钱", "价格", "收费", "学费", "报价", "fee", "fees", "price", "cost", "tuition", "how much", "payment", "pay"]],
+          ["deadline", ["截止", "最晚", "deadline", "last day", "by when"]],
+          ["credit", ["学分", "eps3o", "credit", "ossd", "选修", "必修"]],
+          ["lab", ["实验室", "纳米", "麦吉尔", "曹", "教授", "授权", "科研", "lab", "nano", "mcgill", "professor", "cao", "research", "authoriz", "设备", "equipment"]],
+          ["age", ["年龄", "几岁", "岁", "多大", "年级", "age", "ages", "old", "grade", "eligib"]],
+          ["duration", ["时长", "多久", "多少天", "几天", "21天", "14天", "duration", "how long", "days", "nights", "weeks", "多长"]],
+          ["dates", ["时间", "日期", "什么时候", "几月", "何时", "开营", "date", "dates", "when", "start", "july", "schedule"]],
+          ["route", ["城市", "行程", "路线", "去哪", "参访", "哪些地方", "渥太华", "滑铁卢", "itinerary", "cities", "city", "route", "visit", "where", "toronto", "montreal", "ottawa"]],
+          ["stay", ["住宿", "宿舍", "住哪", "酒店", "寄宿", "homestay", "accommodation", "residence", "dorm", "dormitory", "stay", "hotel", "living"]],
+          ["group", ["人数", "多少人", "几个人", "团", "group size", "how many", "class size", "students per"]],
+          ["apply", ["报名", "申请", "联系", "微信", "电话", "咨询", "apply", "application", "enroll", "register", "sign up", "contact", "wechat", "phone", "book"]]
+        ];
+
+        function matchTopic(text) {
+          var t = " " + String(text).toLowerCase() + " ";
+          for (var i = 0; i < TOPICS.length; i++) {
+            var kws = TOPICS[i][1];
+            for (var j = 0; j < kws.length; j++) {
+              if (t.indexOf(kws[j]) !== -1) return TOPICS[i][0];
+            }
+          }
+          if (/^(你好|您好|hi|hello|hey|在吗)/.test(t.trim())) return "greeting";
+          return null;
+        }
+
+        var fab = document.getElementById("chat-fab");
+        var fabLabel = document.getElementById("chat-fab-label");
+        var panel = document.getElementById("chat-panel");
+        var closeBtn = document.getElementById("chat-close");
+        var titleEl = document.getElementById("chat-title");
+        var subtitleEl = document.getElementById("chat-subtitle");
+        var bodyEl = document.getElementById("chat-body");
+        var chipsEl = document.getElementById("chat-chips");
+        var form = document.getElementById("chat-form");
+        var input = document.getElementById("chat-input");
+        var sendBtn = document.getElementById("chat-send");
+
+        /* History entries: { role: "user", text } or { role: "bot", topic } — bot
+           messages re-render in the current language when the site language changes. */
+        var history = [];
+        var welcomed = false;
+
+        function lang() { return document.body.getAttribute("data-lang") === "en" ? "en" : "zh"; }
+
+        function renderStatic() {
+          var ui = UI[lang()];
+          fabLabel.textContent = ui.fab;
+          titleEl.textContent = ui.title;
+          subtitleEl.textContent = ui.subtitle;
+          input.setAttribute("placeholder", ui.placeholder);
+          sendBtn.textContent = ui.send;
+          chipsEl.innerHTML = "";
+          ui.chips.forEach(function (pair) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "chip";
+            b.textContent = pair[1];
+            b.addEventListener("click", function () { ask(pair[1], pair[0]); });
+            chipsEl.appendChild(b);
+          });
+        }
+
+        function renderMessages() {
+          bodyEl.innerHTML = "";
+          history.forEach(function (m) {
+            var d = document.createElement("div");
+            d.className = "msg " + m.role;
+            if (m.role === "user") { d.textContent = m.text; }
+            else { d.innerHTML = ANSWERS[m.topic][lang()]; }
+            bodyEl.appendChild(d);
+          });
+          bodyEl.scrollTop = bodyEl.scrollHeight;
+        }
+
+        function pushBot(topic) {
+          history.push({ role: "bot", topic: topic });
+          renderMessages();
+        }
+
+        function ask(text, topic) {
+          history.push({ role: "user", text: text });
+          renderMessages();
+          var matched = topic || matchTopic(text) || "fallback";
+          if (!ANSWERS[matched]) matched = "fallback";
+          window.setTimeout(function () { pushBot(matched); }, 180);
+        }
+
+        function openPanel() {
+          panel.hidden = false;
+          fab.setAttribute("aria-expanded", "true");
+          if (!welcomed) { welcomed = true; pushBot("welcome-key"); }
+          input.focus();
+        }
+        /* Welcome uses the UI string rather than ANSWERS; store it as a pseudo-topic. */
+        ANSWERS["welcome-key"] = { get zh() { return UI.zh.welcome; }, get en() { return UI.en.welcome; } };
+        ANSWERS["fallback"] = { get zh() { return UI.zh.fallback; }, get en() { return UI.en.fallback; } };
+
+        function closePanel() {
+          panel.hidden = true;
+          fab.setAttribute("aria-expanded", "false");
+          fab.focus();
+        }
+
+        fab.addEventListener("click", function () {
+          if (panel.hidden) { openPanel(); } else { closePanel(); }
+        });
+        closeBtn.addEventListener("click", closePanel);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !panel.hidden) closePanel();
+        });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var text = input.value.trim();
+          if (!text) return;
+          input.value = "";
+          ask(text, null);
+        });
+
+        /* Follow the site language toggle. */
+        new MutationObserver(function () { renderStatic(); renderMessages(); })
+          .observe(document.body, { attributes: true, attributeFilter: ["data-lang"] });
+
+        renderStatic();
+      })();
+    </script>
+  </body>
+</html>
